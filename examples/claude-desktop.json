@@ -1,0 +1,16 @@
+{
+  "$schema": "https://raw.githubusercontent.com/anthropics/claude-desktop/main/mcp-schema.json",
+  "_comment": "Copy this into ~/Library/Application Support/Claude/claude_desktop_config.json (macOS) or %APPDATA%/Claude/claude_desktop_config.json (Windows). Restart Claude Desktop after saving.",
+
+  "mcpServers": {
+    "1acre": {
+      "url": "https://mcp.1acre.in/mcp",
+      "transport": "http",
+      "oauth": {
+        "clientId": "<your_client_id>",
+        "callbackPort": 8118,
+        "scopes": ["openid", "profile", "email", "offline_access"]
+      }
+    }
+  }
+}
