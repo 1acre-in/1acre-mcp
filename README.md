@@ -27,7 +27,7 @@ Regular 1acre accounts get 3 lifetime lookups. `create_survey_number_report` and
 ```bash
 claude mcp add --scope user --transport http 1acre https://mcp.1acre.in/mcp \
   --callback-port 8118 \
-  --client-id <your OAuth client id from Clerk dashboard>
+  --client-id I97VjA0dFZATgN2F
 ```
 
 Then in Claude Code:
@@ -54,7 +54,7 @@ Add to `~/Library/Application Support/Claude/claude_desktop_config.json` (macOS)
       "url": "https://mcp.1acre.in/mcp",
       "transport": "http",
       "oauth": {
-        "clientId": "<your OAuth client id>",
+        "clientId": "I97VjA0dFZATgN2F",
         "callbackPort": 8118
       }
     }
@@ -91,23 +91,19 @@ More detailed examples in [examples/](./examples).
 1acre MCP uses **OAuth 2.1 with PKCE**. Sign-in is phone-number-based via one-time SMS verification (secure, DLT-compliant for Indian phone numbers).
 
 - Your phone number becomes your identity.
-- If you already have a 1acre.in account, MCP resolves to the same account.
-- If you don't, an account is auto-created on first sign-in.
+- **You must have a 1acre.in account first** — sign up at [1acre.in](https://1acre.in) with the phone number you plan to use. MCP resolves your Clerk identity to that Account by matching the phone.
 - Sessions are managed by the auth server; your MCP client refreshes tokens automatically.
-
-For architectural detail on the OAuth flow, see [docs/INTEGRATION_GUIDE.md](./docs/INTEGRATION_GUIDE.md).
 
 ---
 
 ## Registering an OAuth client
 
-The `client_id` you use in the config comes from 1acre's OAuth provider. To request one:
+The `client_id` you use in the config comes from 1acre's OAuth provider. To request one, contact `hello@1acre.co` with:
 
-1. Visit https://1acre.in/developers (or contact `hello@1acre.co`)
-2. Provide your MCP client name and expected callback URL
-3. Receive a `client_id` (public — safe to commit; PKCE-only, no secret)
+1. Your MCP client name (e.g. "Claude Code", "Cursor", "Internal agent X")
+2. The exact callback URL your client will use (e.g. `http://localhost:8118/callback` for Claude Code)
 
-For MCP clients that support Dynamic Client Registration (RFC 7591), no manual step is needed — the client will register itself.
+You'll receive a `client_id` (public — safe to commit; PKCE-only, no client secret).
 
 ---
 
@@ -125,13 +121,12 @@ For MCP clients that support Dynamic Client Registration (RFC 7591), no manual s
 - **Paid tools** (report generation, parcel identification): 3 lifetime lookups per regular account
 - **Rate limits**: 60 requests/minute per token
 
-Upgrade an account for higher limits at [1acre.in/subscribe](https://1acre.in/subscribe).
+For higher limits, contact `hello@1acre.co`.
 
 ---
 
 ## Support
 
-- Docs: [1acre.in/developers/mcp](https://1acre.in/developers/mcp)
 - Issues: [github.com/1acre-in/1acre-mcp/issues](https://github.com/1acre-in/1acre-mcp/issues)
 - Email: `hello@1acre.co`
 

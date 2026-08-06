@@ -5,7 +5,7 @@
 ```bash
 claude mcp add --scope user --transport http 1acre https://mcp.1acre.in/mcp \
   --callback-port 8118 \
-  --client-id <your_client_id>
+  --client-id I97VjA0dFZATgN2F
 ```
 
 `--scope user` makes the server available from any project you open in Claude Code. Use `--scope project` if you only want it available in the current directory.
@@ -44,7 +44,7 @@ claude mcp remove 1acre --scope user
 
 ## Troubleshooting
 
-**"Callback URL mismatch"** — your `client_id`'s allowed redirect URIs don't include `http://localhost:8118/callback`. Update the OAuth application in the 1acre developer dashboard.
+**"Callback URL mismatch"** — your `client_id`'s allowed redirect URIs don't include `http://localhost:8118/callback`. Email `hello@1acre.co` with the exact callback URL you need registered.
 
 **"No OTP arrived"** — check your phone signal, then check that the phone number is registered in the correct country format (`+91` for India). If still nothing, contact `hello@1acre.co`.
 
