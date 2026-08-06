@@ -16,7 +16,21 @@
 }
 ```
 
-Cursor discovers the OAuth authorization server automatically via `.well-known/oauth-protected-resource` on the MCP endpoint, and does Dynamic Client Registration (RFC 7591) so you don't need to manually provide a `client_id`.
+Cursor discovers the OAuth authorization server automatically via `.well-known/oauth-protected-resource` on the MCP endpoint. If your Cursor version doesn't complete the flow automatically, add a `clientId` (contact `hello@1acre.co` to receive one):
+
+```json
+{
+  "mcpServers": {
+    "1acre": {
+      "url": "https://mcp.1acre.in/mcp",
+      "oauth": {
+        "clientId": "<your_client_id>",
+        "callbackPort": 8118
+      }
+    }
+  }
+}
+```
 
 ## Sign in
 
