@@ -27,7 +27,7 @@ Regular 1acre accounts get 3 lifetime lookups. `create_survey_number_report` and
 ```bash
 claude mcp add --scope user --transport http 1acre https://mcp.1acre.in/mcp \
   --callback-port 8118 \
-  --client-id <your OAuth client id from Clerk dashboard>
+  --client-id I97VjA0dFZATgN2F
 ```
 
 Then in Claude Code:
@@ -54,7 +54,7 @@ Add to `~/Library/Application Support/Claude/claude_desktop_config.json` (macOS)
       "url": "https://mcp.1acre.in/mcp",
       "transport": "http",
       "oauth": {
-        "clientId": "<your OAuth client id>",
+        "clientId": "I97VjA0dFZATgN2F",
         "callbackPort": 8118
       }
     }

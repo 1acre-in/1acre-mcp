@@ -8,10 +8,10 @@ ChatGPT supports MCP servers via Custom GPTs and Actions in some rollouts. Avail
 2. In the **Configure** tab, scroll to **Actions** → **Create new action**.
 3. Set the schema URL to: `https://mcp.1acre.in/.well-known/openapi.json` (if published) or use the MCP endpoint directly.
 4. Authentication: **OAuth**
-   - Client ID: `<your_client_id>`
+   - Client ID: `I97VjA0dFZATgN2F`
    - Client Secret: leave blank (PKCE, no secret needed)
-   - Authorization URL: `https://<your-clerk-slug>.clerk.accounts.dev/oauth/authorize`
-   - Token URL: `https://<your-clerk-slug>.clerk.accounts.dev/oauth/token`
+   - Authorization URL: `https://big-flea-66.clerk.accounts.dev/oauth/authorize`
+   - Token URL: `https://big-flea-66.clerk.accounts.dev/oauth/token`
    - Scope: `openid profile email offline_access`
 
 5. Save. ChatGPT will show the OAuth authorization link on next tool invocation.
