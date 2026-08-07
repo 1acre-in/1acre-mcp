@@ -7,9 +7,9 @@
       "url": "https://mcp.1acre.in/mcp",
       "transport": "http",
       "oauth": {
-        "clientId": "I97VjA0dFZATgN2F",
+        "clientId": "eKg8BebDnd09zxwy",
         "callbackPort": 8118,
-        "scopes": ["openid", "profile", "email", "offline_access"]
+        "scopes": ["openid", "offline_access"]
       }
     }
   }

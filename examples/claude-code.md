@@ -5,7 +5,7 @@
 ```bash
 claude mcp add --scope user --transport http 1acre https://mcp.1acre.in/mcp \
   --callback-port 8118 \
-  --client-id I97VjA0dFZATgN2F
+  --client-id eKg8BebDnd09zxwy
 ```
 
 `--scope user` makes the server available from any project you open in Claude Code. Use `--scope project` if you only want it available in the current directory.
