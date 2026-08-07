@@ -24,7 +24,7 @@ Cursor discovers the OAuth authorization server automatically via `.well-known/o
     "1acre": {
       "url": "https://mcp.1acre.in/mcp",
       "oauth": {
-        "clientId": "I97VjA0dFZATgN2F",
+        "clientId": "eKg8BebDnd09zxwy",
         "callbackPort": 8118
       }
     }
