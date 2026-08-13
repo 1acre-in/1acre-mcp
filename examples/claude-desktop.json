@@ -9,7 +9,7 @@
       "oauth": {
         "clientId": "eKg8BebDnd09zxwy",
         "callbackPort": 8118,
-        "scopes": ["openid", "offline_access"]
+        "scopes": ["openid", "profile", "email", "offline_access"]
       }
     }
   }

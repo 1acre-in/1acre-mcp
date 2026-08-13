@@ -12,7 +12,7 @@ ChatGPT supports MCP servers via Custom GPTs and Actions in some rollouts. Avail
    - Client Secret: leave blank (PKCE, no secret needed)
    - Authorization URL: `https://clerk.1acre.in/oauth/authorize`
    - Token URL: `https://clerk.1acre.in/oauth/token`
-   - Scope: `openid offline_access`
+   - Scope: `openid profile email offline_access`
 
 5. Save. ChatGPT will show the OAuth authorization link on next tool invocation.
 
