@@ -17,8 +17,10 @@ Once connected, any MCP client can call these tools as the signed-in 1acre user:
 | `list_survey_numbers` | ✅ | List survey numbers that exist in a given village |
 | `create_survey_number_report` | ⚠ Costs 1 lookup | Generate a full report for a survey number |
 | `identify_parcel_at_point` | ⚠ Costs 1 lookup | Identify the parcel at a lat/lng coordinate |
+| `get_survey_number_report` | ✅ | Re-open a previously generated report by ID — no lookup consumed |
+| `get_report_coordinates` | ✅ | Get GeoJSON boundary coordinates for a previously generated report |
 
-Regular 1acre accounts get 3 lifetime lookups. `create_survey_number_report` and `identify_parcel_at_point` permanently consume one each. Free tools have no cost.
+Regular 1acre accounts get 3 lifetime lookups. `create_survey_number_report` and `identify_parcel_at_point` permanently consume one each. Free tools have no cost — once a report exists, you can re-open it and pull its boundary coordinates as often as you like without spending another lookup.
 
 ---
 
@@ -98,12 +100,19 @@ More detailed examples in [examples/](./examples).
 
 ## Registering an OAuth client
 
-The `client_id` you use in the config comes from 1acre's OAuth provider. To request one, contact `hello@1acre.co` with:
+**Most clients register automatically.** 1acre's OAuth provider supports [RFC 7591 Dynamic Client Registration](https://datatracker.ietf.org/doc/html/rfc7591) at `https://clerk.1acre.in/oauth/register` — MCP clients that speak DCR (Claude Code, Smithery, and others) discover this from `.well-known/oauth-authorization-server` and register themselves on first connect. You don't need to do anything, and the `--client-id` flag in the Quick Start above is only needed if your client can't do DCR.
 
-1. Your MCP client name (e.g. "Claude Code", "Cursor", "Internal agent X")
-2. The exact callback URL your client will use (e.g. `http://localhost:8118/callback` for Claude Code)
+<details>
+<summary>Manual registration (only if your client doesn't support DCR)</summary>
+
+Contact `hello@1acre.in` with:
+
+1. Your MCP client name (e.g. "Internal agent X")
+2. The exact callback URL your client will use
 
 You'll receive a `client_id` (public — safe to commit; PKCE-only, no client secret).
+
+</details>
 
 ---
 
@@ -121,14 +130,14 @@ You'll receive a `client_id` (public — safe to commit; PKCE-only, no client se
 - **Paid tools** (report generation, parcel identification): 3 lifetime lookups per regular account
 - **Rate limits**: 60 requests/minute per token
 
-For higher limits, contact `hello@1acre.co`.
+For higher limits, contact `hello@1acre.in`.
 
 ---
 
 ## Support
 
 - Issues: [github.com/1acre-in/1acre-mcp/issues](https://github.com/1acre-in/1acre-mcp/issues)
-- Email: `hello@1acre.co`
+- Email: `hello@1acre.in`
 
 ---
 
