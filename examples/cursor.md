@@ -43,9 +43,9 @@ Cursor discovers the OAuth authorization server automatically via `.well-known/o
 
 In Composer:
 
-> `@1acre get_lookup_quota`
+> `@1acre get_token_balance`
 
-Expected: your current quota returned as a text block.
+Expected: your current token balance returned as a text block.
 
 ## Notes
 

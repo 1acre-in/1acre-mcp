@@ -12,15 +12,19 @@ Once connected, any MCP client can call these tools as the signed-in 1acre user:
 
 | Tool | Free | Description |
 |---|---|---|
-| `get_lookup_quota` | ✅ | Check how many survey lookups remain on your account |
+| `get_token_balance` | ✅ | Check your token balance, tier allowance, and what each paid tool costs |
 | `browse_locations` | ✅ | Walk the location hierarchy (state → district → mandal → village) |
 | `list_survey_numbers` | ✅ | List survey numbers that exist in a given village |
-| `create_survey_number_report` | ⚠ Costs 1 lookup | Generate a full report for a survey number |
-| `identify_parcel_at_point` | ⚠ Costs 1 lookup | Identify the parcel at a lat/lng coordinate |
-| `get_survey_number_report` | ✅ | Re-open a previously generated report by ID — no lookup consumed |
+| `create_survey_number_report` | ⚠ Costs 10 tokens | Generate a full report for a survey number |
+| `identify_parcel_at_point` | ⚠ Costs 10 tokens | Identify the parcel at a lat/lng coordinate |
+| `get_survey_number_report` | ✅ | Re-open a previously generated report by ID — no token consumed |
 | `get_report_coordinates` | ✅ | Get GeoJSON boundary coordinates for a previously generated report |
 
-Regular 1acre accounts get 3 lifetime lookups. `create_survey_number_report` and `identify_parcel_at_point` permanently consume one each. Free tools have no cost — once a report exists, you can re-open it and pull its boundary coordinates as often as you like without spending another lookup.
+Paid tools spend from your **"1a" token balance**: `create_survey_number_report` and `identify_parcel_at_point` cost **10 tokens** per run each. Free tools cost nothing — once a report exists, you can re-open it and pull its boundary coordinates as often as you like without spending another token.
+
+Call `get_token_balance` first (it's free) to see your live balance and the current per-tool price. A run that would overdraw fails with `insufficient_tokens` and is recoverable — top up from the **My Tokens** page on 1acre and retry.
+
+> "Tokens" here means 1acre land-intelligence credits — unrelated to the OAuth access tokens your MCP client manages for sign-in.
 
 ---
 
@@ -41,7 +45,7 @@ Then in Claude Code:
 5. Consent screen → **Allow**
 6. `1acre` flips to **✓ Connected**
 
-Now ask Claude anything land-related: *"How many survey lookups do I have left?"*, *"What districts does Telangana have?"*, etc.
+Now ask Claude anything land-related: *"How many 1acre tokens do I have left?"*, *"What districts does Telangana have?"*, etc.
 
 ---
 
@@ -126,9 +130,20 @@ You'll receive a `client_id` (public — safe to commit; PKCE-only, no client se
 
 ## Costs & limits
 
-- **Free tools** (browse, list, quota check): unlimited
-- **Paid tools** (report generation, parcel identification): 3 lifetime lookups per regular account
-- **Rate limits**: 60 requests/minute per token
+- **Free tools** (browse, list, balance check): unlimited
+- **Paid tools** (report generation, parcel identification): **10 tokens per run**
+- **Rate limits**: 60 requests/minute per OAuth access token
+
+Token allowance by account tier:
+
+| Tier | Allowance |
+|---|---|
+| Non-premium (regular, free trial, expired premium) | 100 tokens |
+| Premium — quarterly plan | 500 tokens |
+| Premium — yearly plan | 2,000 tokens |
+| Premium — grandfathered lifetime | 1,000 tokens |
+
+Tokens **expire 365 days after they are credited** — this is a balance, not a lifetime allowance. Purchased top-up packs stack on top of your tier allowance, so a balance above the figures above is normal. `get_token_balance` is always the source of truth for what's actually spendable.
 
 For higher limits, contact `hello@1acre.in`.
 

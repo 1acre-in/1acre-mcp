@@ -32,9 +32,21 @@ Click it → Claude Code opens your default browser at 1acre's OAuth sign-in pag
 
 Ask Claude:
 
-> "How many 1acre survey lookups do I have left?"
+> "How many 1acre tokens do I have left?"
 
-Expected response: `3 of 3 lookups remaining (0 used, account type: regular)` (or your actual quota).
+Expected response — the shape of a fresh non-premium account:
+
+```
+Token balance: 100 of a 100-token allowance ("1a") — non-premium.
+Premium plans grant more: 500 tokens quarterly, 2000 yearly.
+Cost per run:
+  create_survey_number_report: 10 tokens* — the current balance covers 10
+  identify_parcel_at_point: 10 tokens* — the current balance covers 10
+  * published rate — the tool catalog does not price this tool, so the backend's charge is authoritative.
+Tokens expire 365 days after they are credited — this is a balance, not a lifetime allowance.
+```
+
+Your numbers will differ.
 
 ## Remove
 
@@ -50,4 +62,4 @@ claude mcp remove 1acre --scope user
 
 **"Signed in but tools return `Not authenticated to 1acre`"** — Your 1acre account may not be linked to the phone number you used. Sign in to [1acre.in](https://1acre.in) with the same phone first, then retry the MCP flow.
 
-**Token expired mid-session** — Claude Code handles refresh automatically. If a tool call fails with 401, retry once; if it still fails, `/mcp` → click Reconnect on `1acre`.
+**OAuth token expired mid-session** — Claude Code handles refresh automatically. If a tool call fails with 401, retry once; if it still fails, `/mcp` → click Reconnect on `1acre`.
