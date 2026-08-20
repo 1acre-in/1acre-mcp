@@ -141,7 +141,6 @@ Token allowance by account tier:
 | Non-premium (regular, free trial, expired premium) | 100 tokens |
 | Premium — quarterly plan | 500 tokens |
 | Premium — yearly plan | 2,000 tokens |
-| Premium — grandfathered lifetime | 1,000 tokens |
 
 Tokens **expire 365 days after they are credited** — this is a balance, not a lifetime allowance. Purchased top-up packs stack on top of your tier allowance, so a balance above the figures above is normal. `get_token_balance` is always the source of truth for what's actually spendable.
 
