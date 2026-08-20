@@ -35,9 +35,9 @@ Same phone-OTP flow as other MCP clients — enter phone, receive SMS, enter OTP
 
 ## Verify
 
-Ask ChatGPT: *"Using the 1acre connector, how many survey lookups do I have?"*
+Ask ChatGPT: *"Using the 1acre connector, how many tokens do I have?"*
 
 ## Notes
 
 - ChatGPT's MCP support is evolving quickly. This guide assumes the standard OAuth 2.1 flow. Consult ChatGPT's current MCP docs for the exact UI.
-- Some tools that consume 1acre lookup quota may prompt for confirmation in ChatGPT before executing.
+- Some tools that consume 1acre tokens may prompt for confirmation in ChatGPT before executing.
