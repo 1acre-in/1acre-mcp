@@ -8,7 +8,7 @@ The official MCP (Model Context Protocol) server for [1acre.in](https://1acre.in
 
 ## What you can do
 
-Once connected, any MCP client can call these tools as the signed-in 1acre user:
+Once connected, any MCP client can call these tools as the signed-in 1acre user
 
 | Tool | Cost | Description |
 |---|---|---|
