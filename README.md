@@ -10,17 +10,21 @@ The official MCP (Model Context Protocol) server for [1acre.in](https://1acre.in
 
 Once connected, any MCP client can call these tools as the signed-in 1acre user:
 
-| Tool | Free | Description |
+| Tool | Cost | Description |
 |---|---|---|
-| `get_token_balance` | ✅ | Check your token balance, tier allowance, and what each paid tool costs |
-| `browse_locations` | ✅ | Walk the location hierarchy (state → district → mandal → village) |
-| `list_survey_numbers` | ✅ | List survey numbers that exist in a given village |
-| `create_survey_number_report` | ⚠ Costs 10 tokens | Generate a full report for a survey number |
-| `identify_parcel_at_point` | ⚠ Costs 10 tokens | Identify the parcel at a lat/lng coordinate |
-| `get_survey_number_report` | ✅ | Re-open a previously generated report by ID — no token consumed |
-| `get_report_coordinates` | ✅ | Get GeoJSON boundary coordinates for a previously generated report |
+| `get_token_balance` | Free | Check your token balance, tier allowance, and what each paid tool costs |
+| `browse_locations` | Free | Walk the location hierarchy (state → district → mandal → village) |
+| `list_survey_numbers` | Free | List survey numbers that exist in a given village |
+| `list_available_layers` | Free | Discover which map layers (Master Plan, air-funnels, expressways, metro, etc.) cover a lat/lng — metadata only |
+| `get_survey_number_report` | Free | Re-open a previously generated report by ID — no tokens spent |
+| `get_report_coordinates` | Free | Get GeoJSON boundary coordinates for a previously generated report |
+| `create_sell_listing_intent` | Free | Capture a "sell my land" intake — returns a pre-filled WhatsApp link to the 1acre listings team |
+| `get_layer_info` | **5 tokens per layer** | Fetch feature attributes at a lat/lng inside a paid map layer (zone, permissible height, corridor distance). Misses are free. |
+| `list_lands_in_region` | **1 token per page** | Up to 10 verified 1acre land listings within a radius of a lat/lng (per page). Empty pages are free. |
+| `create_survey_number_report` | **10 tokens** | Generate a full land-intelligence report for a specific survey number |
+| `identify_parcel_at_point` | **10 tokens** | Identify the cadastral parcel at a lat/lng coordinate and generate its report |
 
-Paid tools spend from your **"1a" token balance**: `create_survey_number_report` and `identify_parcel_at_point` cost **10 tokens** per run each. Free tools cost nothing — once a report exists, you can re-open it and pull its boundary coordinates as often as you like without spending another token.
+Paid tools spend from your **"1a" token balance**. Free tools cost nothing — once a report exists, you can re-open it and pull its boundary coordinates as often as you like without spending another token.
 
 Call `get_token_balance` first (it's free) to see your live balance and the current per-tool price. A run that would overdraw fails with `insufficient_tokens` and is recoverable — top up from the **My Tokens** page on 1acre and retry.
 
@@ -130,8 +134,12 @@ You'll receive a `client_id` (public — safe to commit; PKCE-only, no client se
 
 ## Costs & limits
 
-- **Free tools** (browse, list, balance check): unlimited
-- **Paid tools** (report generation, parcel identification): **10 tokens per run**
+- **Free tools** (balance check, discovery, hierarchy browse, list survey numbers, sell-listing intent, re-read reports, get coordinates): unlimited
+- **Paid tools**:
+  - `get_layer_info` — **5 tokens per layer** that returns a feature (misses are free)
+  - `list_lands_in_region` — **1 token per non-empty page** (10 listings per page; empty pages are free)
+  - `create_survey_number_report` — **10 tokens** per report
+  - `identify_parcel_at_point` — **10 tokens** per run
 - **Rate limits**: 60 requests/minute per OAuth access token
 
 Token allowance by account tier:
