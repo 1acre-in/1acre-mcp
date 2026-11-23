@@ -26,7 +26,7 @@ Once connected, any MCP client can call these tools as the signed-in 1acre user
 | `list_lands_in_region` | **1 token per page** | Up to 10 verified 1acre land listings within a radius of a lat/lng (per page). Empty pages are free. |
 | `create_survey_number_report` | **20 tokens** | Generate a full land-intelligence report for a specific survey number |
 | `identify_parcel_at_point` | **20 tokens** | Identify the cadastral parcel at a lat/lng coordinate and generate its report |
-| `run_land_evaluation` | **5 / 20 / 50 tokens, depending on the analysis** | Run one land-evaluation analysis on a point, a polygon (GeoJSON / KML / KMZ, up to 10 sq km), a survey report or a saved evaluation report. Re-running the same analysis on a saved evaluation report is free. |
+| `run_land_evaluation` | **20 / 50 / 100 tokens, depending on the analysis** (`list_evaluation_tools` shows the live price) | Run one land-evaluation analysis on a point, a polygon (GeoJSON / KML / KMZ, up to 10 sq km), a survey report or a saved evaluation report. Re-running the same analysis on a saved evaluation report is free. |
 
 Paid tools spend from your **"1a" token balance**. Free tools cost nothing — once a report exists, you can re-open it and pull its boundary coordinates as often as you like without spending another token.
 
@@ -144,7 +144,7 @@ You'll receive a `client_id` (public — safe to commit; PKCE-only, no client se
   - `list_lands_in_region` — **1 token per non-empty page** (10 listings per page; empty pages are free)
   - `create_survey_number_report` — **20 tokens** per report
   - `identify_parcel_at_point` — **20 tokens** per run
-  - `run_land_evaluation` — **5, 20 or 50 tokens** depending on the analysis; `list_evaluation_tools` shows each one's current price
+  - `run_land_evaluation` — **20, 50 or 100 tokens** depending on the analysis; `list_evaluation_tools` shows each one's current price
 - **Rate limits**: 60 requests/minute per OAuth access token
 
 Token allowance by account tier:
