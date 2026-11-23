@@ -40,8 +40,8 @@ Expected response — the shape of a fresh non-premium account:
 Token balance: 100 of a 100-token allowance ("1a") — non-premium.
 Premium plans grant more: 500 tokens quarterly, 2000 yearly.
 Cost per run:
-  create_survey_number_report: 10 tokens* — the current balance covers 10
-  identify_parcel_at_point: 10 tokens* — the current balance covers 10
+  create_survey_number_report: 20 tokens* — the current balance covers 5
+  identify_parcel_at_point: 20 tokens* — the current balance covers 5
   * published rate — the tool catalog does not price this tool, so the backend's charge is authoritative.
 Tokens expire 365 days after they are credited — this is a balance, not a lifetime allowance.
 ```
